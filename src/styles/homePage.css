@@ -1,0 +1,63 @@
+.main-page {
+  text-align: center;
+  padding-top: 60px;
+  background-image: url('../assets/backgrounds/first_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  top: -15px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.main-page h1 {
+  font-size: 3.5em;
+  margin-bottom: 10px;
+  margin-top: 150px;
+  font-family: 'Bad Script', Arial, sans-serif;
+  animation: slideIn 1s ease-in-out;
+}
+
+.main-page p {
+  font-family: 'Bad Script', Arial, sans-serif;
+  font-size: 2em;
+  margin-bottom: 30px;
+  animation: slideIn 1.2s ease-in-out;
+}
+
+.button--cta {
+  animation: popIn 1.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% { 
+    transform: scale(1.1);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
