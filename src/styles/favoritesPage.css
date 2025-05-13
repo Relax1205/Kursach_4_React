@@ -1,19 +1,19 @@
 #favorites-list-container {
   position: absolute;
-  left: 15%;
+  left: 24%;
   top: 205;
-  width: 40%;
+  width: 25%;
   height: 65%;
   background-color: transparent;
   padding: 15px;
   border-radius: 0;
   box-shadow: none;
   font-family: 'Bad Script', cursive;
-  font-size: 1.2em;
+  font-size: 1em;
   color: #4a3a2a;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
   z-index: 10;
-  transform: rotate(-2deg);
+  transform: rotate(-7eg);
   display: flex;
   flex-direction: column;
 }
