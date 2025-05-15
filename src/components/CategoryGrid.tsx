@@ -9,14 +9,6 @@ const CategoryGrid: React.FC = () => {
   const [showWarning, setShowWarning] = useState(false);
   const navigate = useNavigate();
 
-  const handleCategorySelect = (categoryId: string) => {
-    if (selectedCategory === categoryId) {
-      setSelectedCategory('');
-    } else {
-      setSelectedCategory(categoryId);
-    }
-  };
-
   const handleNextClick = () => {
     if (!selectedCategory) {
       setShowWarning(true);
@@ -26,9 +18,17 @@ const CategoryGrid: React.FC = () => {
     }
   };
 
+  const handleCategorySelect = (categoryId: string) => {
+    if (selectedCategory === categoryId) {
+      setSelectedCategory('');
+    } else {
+      setSelectedCategory(categoryId);
+    }
+  };
+
+
   return (
     <div className="categories">
-      {/* Фоновая картинка книги */}
       <img 
         src={require('../assets/backgrounds/book.png')} 
         alt="Книга с блюдами" 

@@ -33,19 +33,16 @@ export const RecipeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   ];
 
   useEffect(() => {
-    // Load selected category from localStorage
     const savedCategory = localStorage.getItem('selectedFoodCategory');
     if (savedCategory) {
       setSelectedCategory(savedCategory);
     }
     
-    // Load selected products from localStorage
     const savedProducts = localStorage.getItem('selectedProducts');
     if (savedProducts) {
       setSelectedProducts(JSON.parse(savedProducts));
     }
     
-    // Load favorite recipes from localStorage
     const savedFavorites = localStorage.getItem('favoriteRecipes');
     if (savedFavorites) {
       setFavoriteRecipes(JSON.parse(savedFavorites));
@@ -53,17 +50,14 @@ export const RecipeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   }, []);
   
   useEffect(() => {
-    // Save selected category to localStorage
     localStorage.setItem('selectedFoodCategory', selectedCategory);
   }, [selectedCategory]);
   
   useEffect(() => {
-    // Save selected products to localStorage
     localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
   }, [selectedProducts]);
   
   useEffect(() => {
-    // Save favorite recipes to localStorage
     localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
   }, [favoriteRecipes]);
   
@@ -84,22 +78,18 @@ export const RecipeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   
   const filteredRecipes = allRecipes
     .filter(recipe => {
-      // Category filter
       if (selectedCategory && recipe.category !== selectedCategory) {
         return false;
       }
       
-      // Ingredients filter
       const selectedProductIds = selectedProducts.map(p => p.id);
       const matchingIngredients = recipe.requiredIngredients.filter(reqId => 
         selectedProductIds.includes(reqId)
       );
       
-      // Has at least one matching ingredient
       return matchingIngredients.length > 0;
     })
     .map(recipe => {
-      // Calculate match percentage
       const selectedProductIds = selectedProducts.map(p => p.id);
       const matchingIngredients = recipe.requiredIngredients.filter(reqId => 
         selectedProductIds.includes(reqId)
@@ -112,7 +102,6 @@ export const RecipeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       };
     })
     .sort((a, b) => {
-      // Sort by match percentage (highest first)
       return b.matchPercent - a.matchPercent;
     });
   

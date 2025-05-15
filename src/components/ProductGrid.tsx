@@ -13,6 +13,10 @@ interface ProductGridProps {
 const ProductGrid: React.FC<ProductGridProps> = ({ products, prevPage, nextPage }) => {
   const { selectedProducts, setSelectedProducts } = useRecipe();
   
+  const isSelected = (productId: string) => {
+    return selectedProducts.some(p => p.id === productId);
+  };
+
   const toggleProduct = (product: Product) => {
     setSelectedProducts(prev => {
       const isSelected = prev.some(p => p.id === product.id);
@@ -24,10 +28,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, prevPage, nextPage 
     });
   };
   
-  const isSelected = (productId: string) => {
-    return selectedProducts.some(p => p.id === productId);
-  };
-  
+
   return (
     <div className="product-page">
       <img 

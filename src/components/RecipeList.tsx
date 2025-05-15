@@ -5,11 +5,23 @@ import { ingredientTranslations } from '../data/products';
 import RecipeModal from './RecipeModal';
 import '../styles/recipeList.css';
 
+// Импорты изображений (предположим, что они определены где-то рядом)ф
 const RecipeList: React.FC = () => {
   const { filteredRecipes, selectedCategory, selectedProducts, isInFavorites, addToFavorites, removeFromFavorites } = useRecipe();
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
+  // Переводы категорий
+  const categoryTranslations: Record<string, string> = {
+    snack: 'Закуска',
+    soup: 'Суп',
+    drink: 'Напиток',
+    main: 'Основное Блюдо',
+    dessert: 'Десерт',
+    garnish: 'Гарнир',
+    bakery: 'Выпечка'
+  };
+
   const handleRecipeClick = (recipe: Recipe) => {
     setSelectedRecipe(recipe);
     setIsModalOpen(true);
@@ -40,7 +52,11 @@ const RecipeList: React.FC = () => {
         <div className="selected-list">
           <h2>Ваш выбор:</h2>
           <div className="selected-category">
-            <p>Категория: {selectedCategory ? filteredRecipes[0]?.category : 'Не выбрана'}</p>
+            <p>
+              Категория: {selectedCategory 
+                ? categoryTranslations[selectedCategory] 
+                : 'Не выбрана'}
+            </p>
           </div>
           <h3>Продукты:</h3>
           <ul className="selected-products-list">
